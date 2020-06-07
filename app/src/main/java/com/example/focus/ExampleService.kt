@@ -3,32 +3,45 @@ package com.example.focus
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.View
+import android.os.IBinder
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
-class MainActivity : AppCompatActivity() {
+
+class ExampleService : Service() {
 
     val CHANNEL_ID = "CHANNEL_ID"
 
+    var timer: Timer = Timer()
+    var timerTask: TimerTask = CustomTimerTask(this)
 
+    override fun onBind(intent: Intent?): IBinder? {
+        return null
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun onCreate() {
+        super.onCreate()
 
+        Toast.makeText(this,"Started" , Toast.LENGTH_LONG).show()
+        timer.scheduleAtFixedRate(timerTask,0,5000)
+
+    }
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        //return super.onStartCommand(intent, flags, startId)
         createNotificationChannel()
+        //val input = intent?.getStringExtra("INPUT")
+        Toast.makeText(this,"Running" , Toast.LENGTH_LONG).show()
 
-        button.setOnClickListener {
-            startService()
-            //createNotification()
-        }
+        createNotification()
+
+        return START_STICKY
+
     }
 
     private fun createNotification(){
@@ -39,38 +52,25 @@ class MainActivity : AppCompatActivity() {
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_background)
             .setContentTitle("Content title")
-            .setContentText("This is ok")
+            .setContentText("checking")
             .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setAutoCancel(false)
             .setOngoing(true)
+            .build()
 
-        with(NotificationManagerCompat.from(this)) {
+        startForeground(1,builder)
+
+
+        /*with(NotificationManagerCompat.from(this)) {
             // notificationId is a unique int for each notification that you must define
             notify(2, builder.build())
-        }
-    }
-
-    fun startService(){
-        val serviceIntent = Intent(this,ExampleService::class.java)
-        serviceIntent.putExtra("INPUT" , "Ankit")
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O)
-        {
-            startForegroundService(serviceIntent)
-        }else
-        {
-            startService(serviceIntent)
-        }
-    }
-
-    fun stopService(){
-        val serviceIntent = Intent(this,ExampleService::class.java)
-        stopService(serviceIntent)
+        }*/
     }
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            /*val name = "Channel Name"
+            val name = "Channel Name"
             val descriptionText = "Channel description"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
@@ -79,7 +79,14 @@ class MainActivity : AppCompatActivity() {
             // Register the channel with the system
             val notificationManager: NotificationManager =
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)*/
+            notificationManager.createNotificationChannel(channel)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        timer.cancel()
+
+        Toast.makeText(this,"Closed" , Toast.LENGTH_LONG).show()
     }
 }
