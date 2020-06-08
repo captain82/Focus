@@ -52,23 +52,18 @@ class ExampleService : Service() {
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
 
         val contentView = RemoteViews(packageName, R.layout.custom_push)
-        contentView.setImageViewResource(R.id.image, R.mipmap.ic_launcher)
-        contentView.setTextViewText(R.id.title, "Custom notification")
-        contentView.setTextViewText(R.id.text, "This is a custom layout")
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_background)
             .setContent(contentView)
             .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setStyle( NotificationCompat.BigTextStyle().bigText("title"))
-            .setStyle(NotificationCompat.BigTextStyle().bigText("jnjn").setSummaryText("#hashtag"))
             .setAutoCancel(false)
             .setGroup("abc")
             .setOngoing(true)
             .build()
 
         startForeground(1,builder)
-        
+
         /*with(NotificationManagerCompat.from(this)) {
             // notificationId is a unique int for each notification that you must define
             notify(2, builder.build())
