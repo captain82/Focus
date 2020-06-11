@@ -27,10 +27,8 @@ class ExampleService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-
         Toast.makeText(this,"Started" , Toast.LENGTH_LONG).show()
         timer.scheduleAtFixedRate(timerTask,0,5000)
-
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
