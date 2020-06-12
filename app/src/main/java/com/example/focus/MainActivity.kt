@@ -17,18 +17,19 @@ class MainActivity : AppCompatActivity() {
 
     val CHANNEL_ID = "CHANNEL_ID"
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         createNotificationChannel()
 
-        button.setOnClickListener {
+        val adapter = RecyclerViewAdapter()
+        recyclerView.adapter = adapter
+
+        /*button.setOnClickListener {
             startService()
             //createNotification()
-        }
+        }*/
     }
 
     private fun createNotification(){
