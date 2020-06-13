@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="wrap_content"
     android:elevation="0dp"
     android:layout_marginTop="24dp"
     android:translationZ="0dp"
@@ -15,29 +14,65 @@
     android:layout_marginEnd="24dp"
     app:cardCornerRadius="10dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <View
-            android:id="@+id/sleekBar"
-            android:layout_width="5dp"
-            android:background="#ec91c1"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
+    <View
+        android:id="@+id/sleekBar"
+        android:layout_width="5dp"
+        android:background="#ee494b"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:layout_height="wrap_content">
+
+
+
+        <ImageView
+            android:id="@+id/radioButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            />
+
+        <ImageView
+            android:id="@+id/radioButtonChecked"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_check_complete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <TextView
             android:id="@+id/taskTitle"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="24dp"
+            android:gravity="center_vertical"
             android:textColor="#ee494b"
             android:layout_marginStart="12dp"
-            app:layout_constraintStart_toEndOf="@id/sleekBar"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:fontFamily="@font/product_sans_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/radioButton"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="24dp"
+            android:layout_marginEnd="12dp"
+            android:textStyle="bold"
             android:text="Complete Focus app by this weekend"
             />
 
@@ -45,19 +80,21 @@
             android:id="@+id/descTextView"
             android:layout_width="0dp"
             app:layout_constraintTop_toBottomOf="@id/taskTitle"
+            android:textColor="#000000"
+            android:fontFamily="@font/product_sans_regular"
+            android:visibility="visible"
             android:layout_marginTop="12dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:textColor="#f3a4a9"
-            app:layout_constraintStart_toEndOf="@id/sleekBar"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="@id/taskTitle"
+            app:layout_constraintEnd_toEndOf="@id/taskTitle"
             android:text="Complete this shit as soon as possible for doing next awesome projects."
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="16dp"
-            android:layout_height="0dp"/>
+            android:layout_height="wrap_content"/>
 
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 </androidx.cardview.widget.CardView>
 
