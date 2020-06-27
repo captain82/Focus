@@ -10,8 +10,8 @@ class EmptyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_empty)
 
-        closeApp.setOnClickListener {
+        /*ca.setOnClickListener {
             finishAndRemoveTask()
-        }
+        }*/
     }
 }

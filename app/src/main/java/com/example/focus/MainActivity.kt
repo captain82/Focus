@@ -39,6 +39,10 @@ class MainActivity : AppCompatActivity() {
             startService()
             //createNotification()
         }*/
+
+        fabButton.setOnClickListener {
+            startActivity(Intent(this,EmptyActivity::class.java))
+        }
     }
 
     private fun createNotification(){

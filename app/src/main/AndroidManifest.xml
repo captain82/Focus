@@ -3,7 +3,7 @@
     package="com.example.focus">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -12,9 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EmptyActivity"
-            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar">
-            </activity>
+        <activity
+            android:name=".EmptyActivity"
+            android:theme="@style/DialogTheme" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,19 +23,20 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".BootUpBroadCastReceiver" android:enabled="true" android:exported="false">
+        <receiver
+            android:name=".BootUpBroadCastReceiver"
+            android:enabled="true"
+            android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
-        <service android:name=".ExampleService"
-            android:process=":ExampleService"
+        <service
+            android:name=".ExampleService"
             android:enabled="true"
-            android:stopWithTask="false"
-            />
+            android:process=":ExampleService"
+            android:stopWithTask="false" />
     </application>
-
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
 </manifest>
