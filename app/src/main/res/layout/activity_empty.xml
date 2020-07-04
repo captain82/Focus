@@ -62,7 +62,6 @@
                 android:maxLines="5"
                 android:lines="3"
                 android:fontFamily="@font/product_sans_regular"
-
                 android:hint="short Description"
                 android:gravity="start"
                 app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +73,7 @@
             <Button
                 android:id="@+id/doneButton"
                 android:layout_width="0dp"
-                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Done"
@@ -94,6 +93,7 @@
                 android:textColor="@color/colorPrimary"
                 android:text="Delete"
                 android:gravity="center"
+                android:visibility="visible"
                 android:fontFamily="@font/product_sans_regular"
                 app:layout_constraintStart_toEndOf="@id/doneButton"
                 app:layout_constraintTop_toTopOf="@id/doneButton"

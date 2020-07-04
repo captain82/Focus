@@ -12,12 +12,18 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.facebook.stetho.Stetho
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     val CHANNEL_ID = "CHANNEL_ID"
+
+    private val viewModel by lazy {
+        ViewModelProviders.of(this).get(TaskViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         createNotificationChannel()
 
         Stetho.initializeWithDefaults(this)
+
+        viewModel.fetchTasks()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.statusBarColor = Color.TRANSPARENT
@@ -42,6 +50,10 @@ class MainActivity : AppCompatActivity() {
             startService()
             //createNotification()
         }*/
+        viewModel.taskList.observe(this, Observer { taskList->
+            adapter.setData(taskList as MutableList<TaskModel>)
+
+        })
 
         fabButton.setOnClickListener {
             startActivity(Intent(this,EmptyActivity::class.java))

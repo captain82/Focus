@@ -19,11 +19,32 @@
     <color name="darkOrange">#f4a986</color>
     <color name="lightOrange">#f4b876</color>
     <color name="scrim">#99323232</color>
-
-
-
-
+    
     <color name="greenlight">#76a0a8</color>
+    
+    <array name="cardThemeBackground">
+        <item>@color/greenBackground</item>
+        <item>@color/blueBackground</item>
+        <item>@color/greyBackground</item>
+        <item>@color/redBackground</item>
+        <item>@color/orangeBackground</item>
+    </array>
+
+    <array name="cardThemeDark">
+        <item>@color/darkGreen</item>
+        <item>@color/darkBlue</item>
+        <item>@color/darkGrey</item>
+        <item>@color/darkRed</item>
+        <item>@color/darkOrange</item>
+    </array>
+
+    <array name="cardThemeLight">
+        <item>@color/greenlight</item>
+        <item>@color/lightBlue</item>
+        <item>@color/darkGrey</item>
+        <item>@color/darkRed</item>
+        <item>@color/lightOrange</item>
+    </array>
 
 
 </resources>
