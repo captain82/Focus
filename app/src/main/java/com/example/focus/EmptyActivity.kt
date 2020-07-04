@@ -69,6 +69,8 @@ class EmptyActivity : AppCompatActivity() {
             if(titile.text.isNotBlank() or titile.text.isNotEmpty()){
                 //Toast.makeText(this,"Title cannot be empty" , Toast.LENGTH_SHORT).show()
             }
+
+            onBackPressed()
         }
 
         deleteButton.setOnClickListener {
@@ -77,7 +79,4 @@ class EmptyActivity : AppCompatActivity() {
         }
     }
 
-    private fun editTask(){
-
-    }
 }

@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:minHeight="24dp"
-            android:textColor="#000000"
+            android:textColor="#5a5a5a"
             android:layout_marginStart="12dp"
             android:fontFamily="@font/product_sans_bold"
             app:layout_constraintStart_toStartOf="parent"

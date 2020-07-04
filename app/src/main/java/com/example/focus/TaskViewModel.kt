@@ -40,6 +40,13 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
             .subscribe()
     }
 
+    fun updateChecker(isChecked:Boolean,id:Int){
+        Completable.fromAction { database?.taskDao()
+            ?.updateChecker(isChecked,id) }.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
+    }
+
     fun deleteTask(id: Int){
         Completable.fromAction { database?.taskDao()
             ?.deleteTask(id)}.subscribeOn(Schedulers.io())

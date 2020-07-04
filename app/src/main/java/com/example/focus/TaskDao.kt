@@ -11,6 +11,9 @@ interface TaskDao {
     @Query("UPDATE taskmodel SET title = :title,description = :desc WHERE id=:id")
     fun updateTask(title: String, desc: String, id: Int)
 
+    @Query("UPDATE taskmodel SET isCompleted = :isCompleted WHERE id=:id")
+    fun updateChecker(isCompleted: Boolean, id: Int)
+
     @Query("SELECT * FROM `taskmodel`")
     fun query(): Observable<List<TaskModel>>
 

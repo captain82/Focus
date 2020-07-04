@@ -5,17 +5,17 @@
     <color name="colorAccent">#2979FF</color>
 
     <color name="greenBackground">#e3f3e7</color>
-    <color name="darkGreen">#5ab460</color>
+    <color name="darkGreen">#678a74</color>
     <color name="blueBackground">#b3bdcb</color>
-    <color name="darkBlue">#4e5a86</color>
+    <color name="darkBlue">#0779e4</color>
     <color name="lightBlue">#8794ad</color>
 
     <color name="greyBackground">#f6f6f7</color>
-    <color name="darkGrey">#737c83</color>
+    <color name="darkGrey">#4a3f35</color>
     <color name="redBackground">#fae1e2</color>
-    <color name="darkRed">#ee494b</color>
+    <color name="darkRed">#743c08</color>
 
-    <color name="orangeBackground">#fbe0d3</color>
+    <color name="orangeBackground">#ea907a</color>
     <color name="darkOrange">#f4a986</color>
     <color name="lightOrange">#f4b876</color>
     <color name="scrim">#99323232</color>

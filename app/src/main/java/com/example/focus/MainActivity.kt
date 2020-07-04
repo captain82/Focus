@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         ViewModelProviders.of(this).get(TaskViewModel::class.java)
     }
 
+    var completed = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -43,7 +45,9 @@ class MainActivity : AppCompatActivity() {
             decor.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
 
-        val adapter = RecyclerViewAdapter()
+        val adapter = RecyclerViewAdapter(){markChecked,id->
+            viewModel.updateChecker(markChecked,id)
+        }
         recyclerView.adapter = adapter
 
         /*button.setOnClickListener {
@@ -52,7 +56,8 @@ class MainActivity : AppCompatActivity() {
         }*/
         viewModel.taskList.observe(this, Observer { taskList->
             adapter.setData(taskList as MutableList<TaskModel>)
-
+            completed = taskList.count { it.isCompleted }
+            date.text = "${completed}/${taskList.size} completed"
         })
 
         fabButton.setOnClickListener {
