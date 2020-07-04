@@ -1,15 +1,15 @@
 package com.example.focus
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import io.reactivex.Observable
 
 @Dao
 interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertTask(task: TaskModel)
+
+    @Query("UPDATE taskmodel SET title = :title,description = :desc WHERE id=:id")
+    fun updateTask(title: String, desc: String, id: Int)
 
     @Query("SELECT * FROM `taskmodel`")
     fun query(): Observable<List<TaskModel>>

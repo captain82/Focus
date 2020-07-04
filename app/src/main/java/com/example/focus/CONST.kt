@@ -7,6 +7,8 @@ object CONST {
     const val TITLE = "TITLE"
     const val DESC = "DESC"
     const val IS_EDIT = "IS_EDIT"
+    const val ID = "ID"
+
 
     fun convertDpToPixels(dp: Float, context: Context): Int {
         val res = context.resources

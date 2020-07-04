@@ -42,11 +42,14 @@ class RecyclerViewAdapter:RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>()
 
         if(taskList[position].description.isEmpty() || taskList[position].description.isBlank()){
             holder.itemView.descTextView.visibility = View.GONE
+        }else{
+            holder.itemView.descTextView.visibility = View.VISIBLE
+
         }
         holder.itemView.taskTitle.text = taskList[position].title
         holder.itemView.descTextView.text = taskList[position].description
 
-        holder.itemView.sleekBar.setBackgroundColor(cardThemeLight[taskList[position].themeNumber])
+        holder.itemView.sleekBar.setBackgroundColor(cardThemeDark[taskList[position].themeNumber])
 
         /*holder.itemView.cardView.setCardBackgroundColor(cardThemeBackground[taskList[position].themeNumber])
         holder.itemView.taskTitle.setTextColor(cardThemeDark[taskList[position].themeNumber])
@@ -57,6 +60,8 @@ class RecyclerViewAdapter:RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>()
             intent.putExtra(CONST.TITLE,taskList[position].title)
             intent.putExtra(CONST.DESC,taskList[position].description)
             intent.putExtra(CONST.IS_EDIT,true)
+            intent.putExtra(CONST.ID,taskList[position].id)
+
             startActivity(context,intent,null)
         }
 
